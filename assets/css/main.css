@@ -1,66 +1,581 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #2e3141;
-  color: white;
+/*
+	park.css
+	Custom component styles for St. Nicholas Park AI Redesign Project
+	Designed to work with Solid State by HTML5 UP.
+	Uses the exact same colors, fonts, and spacing as main.css.
+	Link this AFTER main.css in index.html.
+
+	Theme Colors (from main.css):
+	  Body bg:         #2e3141
+	  style2 bg:       #353849
+	  style3 bg:       #3d4051
+	  style1 alt bg:   #454858
+	  spotlight:       #4c5c96
+	  spotlight s2:    #45558d
+	  spotlight s3:    #3f4e85
+	  Accent / links:  #ffffff + rgba overlays
+	  Font heading:    Raleway, Helvetica, sans-serif
+	  Font body:       "Source Sans Pro", Helvetica, sans-serif
+*/
+
+/* -----------------------------------------------
+   BANNER ADDITIONS
+   Address line + stat bar below banner text
+----------------------------------------------- */
+
+.park-address {
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.8rem;
+	letter-spacing: 0.1em;
+	color: rgba(255,255,255,0.5);
+	margin-top: 1.2em;
+	margin-bottom: 0;
 }
 
-/* HEADER */
-header {
-  padding: 20px;
-  text-align: center;
-  background: #1f2230;
+.stat-bar {
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2.5rem;
+	margin-top: 2.2rem;
+	padding-top: 2rem;
+	border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* NAV */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  background: #3b3f58;
-  padding: 10px;
+.stat-item {
+	text-align: center;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+.stat-item strong {
+	display: block;
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 2.2rem;
+	font-weight: 700;
+	color: #ffffff;
+	line-height: 1;
 }
 
-/* SECTIONS */
-section {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: auto;
+.stat-item span {
+	display: block;
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.62rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.4);
+	margin-top: 0.4rem;
+	line-height: 1.5;
 }
 
-/* HEADINGS */
-h2 {
-  border-bottom: 2px solid rgba(255,255,255,0.2);
-  padding-bottom: 10px;
+/* -----------------------------------------------
+   SECTION TAG  (small pill above each h2)
+----------------------------------------------- */
+
+.section-tag {
+	display: inline-block;
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.62rem;
+	font-weight: 700;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	background: rgba(255,255,255,0.07);
+	border: 1px solid rgba(255,255,255,0.15);
+	border-radius: 2em;
+	padding: 0.3rem 1rem;
+	margin-bottom: 0.9rem;
+	color: rgba(255,255,255,0.55);
 }
 
-/* BEFORE / AFTER */
-.comparison-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+/* -----------------------------------------------
+   IMAGE SLOTS
+   Dashed placeholder boxes where AI images go.
+   To replace: delete the .img-slot div and add
+   your <img> or <a class="image"><img /></a> tag.
+----------------------------------------------- */
+
+/* Used in spotlight sections (matches .image position) */
+.img-slot {
+	border-radius: 100%;
+	margin: 0 3em 2em 0;
+	width: 22em;
+	min-width: 22em;
+	overflow: hidden;
+	-ms-flex: 1;
+	flex: 1;
+	background: rgba(255,255,255,0.04);
+	border: 2px dashed rgba(255,255,255,0.18);
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.comparison-box {
-  flex: 1;
-  min-width: 300px;
+/* Alternate rows reverse the image side — match main.css behavior */
+.wrapper.spotlight:nth-child(2n - 1) .img-slot {
+	margin: 0 0 2em 3em;
 }
 
-.comparison-box img {
-  width: 100%;
-  border-radius: 10px;
+.img-slot-inner {
+	text-align: center;
+	padding: 1.5rem;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
+.slot-icon {
+	display: block;
+	font-size: 2rem;
+	color: rgba(255,255,255,0.2);
+	margin-bottom: 0.7rem;
+}
+
+.slot-label {
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.62rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.3);
+	margin: 0 0 0.5rem;
+}
+
+.slot-prompt {
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.76rem;
+	font-style: italic;
+	color: rgba(255,255,255,0.22);
+	line-height: 1.55;
+	margin: 0;
+}
+
+/* Card-sized image slot (used in design options grid) */
+.img-slot--card {
+	border-radius: 4px 4px 0 0;
+	width: 100%;
+	min-width: 0;
+	min-height: 170px;
+	margin: 0;
+	flex: none;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-bottom: 2px dashed rgba(255,255,255,0.12);
+}
+
+/* -----------------------------------------------
+   PROBLEM CARDS  (section 2)
+----------------------------------------------- */
+
+.problem-cards {
+	display: -ms-flexbox;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	margin-top: 1.5rem;
+}
+
+.problem-card {
+	display: -ms-flexbox;
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+	padding: 0.9rem 0;
+	border-bottom: 1px solid rgba(255,255,255,0.07);
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.9rem;
+	line-height: 1.65;
+	color: rgba(255,255,255,0.72);
+}
+
+.problem-card:last-child {
+	border-bottom: none;
+}
+
+.pcard-icon {
+	font-size: 1.3rem;
+	flex-shrink: 0;
+	margin-top: 0.05rem;
+	opacity: 0.85;
+}
+
+.problem-card strong {
+	display: block;
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #ffffff;
+	margin-bottom: 0.2rem;
+}
+
+/* -----------------------------------------------
+   ANALYSIS GRID  (section 3 — site & context)
+----------------------------------------------- */
+
+.analysis-grid {
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1rem;
+	margin-top: 1.8rem;
+}
+
+.analysis-card {
+	background: rgba(255,255,255,0.04);
+	border-left: 3px solid rgba(255,255,255,0.18);
+	padding: 1.1rem 1.3rem;
+	border-radius: 0 4px 4px 0;
+}
+
+.analysis-card h4 {
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.5);
+	margin: 0 0 0.55rem;
+}
+
+.analysis-card p {
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.87rem;
+	line-height: 1.65;
+	color: rgba(255,255,255,0.68);
+	margin: 0;
+}
+
+/* -----------------------------------------------
+   DESIGN OPTIONS GRID  (section 4)
+----------------------------------------------- */
+
+.options-grid {
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 1.5rem;
+	margin-top: 2rem;
+}
+
+.option-card {
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.08);
+	border-radius: 4px;
+	overflow: hidden;
+	-moz-transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	-webkit-transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	-ms-transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	display: -ms-flexbox;
+	display: flex;
+	flex-direction: column;
+}
+
+.option-card:hover {
+	background: rgba(255,255,255,0.07);
+	transform: translateY(-4px);
+}
+
+/* Selected card uses Solid State spotlight blue */
+.option-card--selected {
+	border-color: rgba(76,92,150,0.9);
+	box-shadow: 0 0 0 2px rgba(76,92,150,0.3);
+}
+
+.option-body {
+	padding: 1.4rem 1.5rem 1.6rem;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.option-label {
+	display: block;
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.6rem;
+	font-weight: 700;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.38);
+	margin-bottom: 0.5rem;
+}
+
+.option-card--selected .option-label {
+	color: rgba(155,170,220,0.8);
+}
+
+/* Selected badge */
+.option-badge {
+	display: inline-block;
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.6rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	background: rgba(76,92,150,0.35);
+	border: 1px solid rgba(76,92,150,0.8);
+	color: #9baadc;
+	padding: 0.28rem 0.8rem;
+	border-radius: 2em;
+	margin-bottom: 0.5rem;
+}
+
+.option-card h3 {
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: #ffffff;
+	margin: 0 0 0.55rem;
+}
+
+.option-card p {
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.87rem;
+	line-height: 1.62;
+	color: rgba(255,255,255,0.65);
+	margin: 0 0 1rem;
+}
+
+/* Pros / cons list */
+.option-pros-cons {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem 1rem;
+}
+
+.option-pros-cons li {
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.8rem;
+	color: rgba(255,255,255,0.55);
+}
+
+.option-pros-cons li.pro {
+	color: rgba(155,210,155,0.85);
+}
+
+.option-pros-cons li.con {
+	color: rgba(210,120,120,0.85);
+}
+
+/* -----------------------------------------------
+   AI FEATURES GRID  (section 5 — final proposal)
+----------------------------------------------- */
+
+.features-grid {
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1.1rem;
+	margin: 1.8rem 0;
+}
+
+.feature {
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.07);
+	border-radius: 4px;
+	padding: 1.2rem 1.4rem;
+	-moz-transition: background-color 0.2s ease-in-out;
+	-webkit-transition: background-color 0.2s ease-in-out;
+	-ms-transition: background-color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.feature:hover {
+	background: rgba(255,255,255,0.08);
+}
+
+.feature-icon {
+	display: block;
+	font-size: 1.5rem;
+	color: rgba(255,255,255,0.45);
+	margin-bottom: 0.65rem;
+	line-height: 1;
+}
+
+.feature h4 {
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: #ffffff;
+	margin: 0 0 0.45rem;
+}
+
+.feature p {
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.87rem;
+	line-height: 1.62;
+	color: rgba(255,255,255,0.62);
+	margin: 0;
+}
+
+/* -----------------------------------------------
+   REFLECTION COLUMNS  (section 6)
+----------------------------------------------- */
+
+.reflection-cols {
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.5rem;
+	margin-top: 1.8rem;
+}
+
+.reflection-col {
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.07);
+	border-radius: 4px;
+	padding: 1.5rem 1.6rem;
+}
+
+.reflection-col h4 {
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.5);
+	margin: 0 0 1rem;
+	padding-bottom: 0.65rem;
+	border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.reflection-col ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.reflection-col ul li {
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.87rem;
+	line-height: 1.62;
+	color: rgba(255,255,255,0.68);
+	padding: 0.55rem 0 0.55rem 1.3rem;
+	border-bottom: 1px solid rgba(255,255,255,0.05);
+	position: relative;
+}
+
+.reflection-col ul li::before {
+	content: '\2192';
+	position: absolute;
+	left: 0;
+	color: rgba(255,255,255,0.22);
+}
+
+.reflection-col ul li:last-child {
+	border-bottom: none;
+}
+
+/* Conclusion box */
+.conclusion-box {
+	background: rgba(76,92,150,0.15);
+	border: 1px solid rgba(76,92,150,0.35);
+	border-radius: 4px;
+	padding: 1.6rem 2rem;
+	margin-top: 2.5rem;
+}
+
+.conclusion-box h3 {
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: rgba(155,170,220,0.9);
+	margin: 0 0 0.7rem;
+}
+
+.conclusion-box p {
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.95rem;
+	line-height: 1.7;
+	color: rgba(255,255,255,0.78);
+	margin: 0;
+}
+
+/* -----------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   Match main.css breakpoints: 1280, 980, 736, 480
+----------------------------------------------- */
+
+@media screen and (max-width: 980px) {
+
+	.img-slot {
+		border-radius: 4px;
+		width: 100%;
+		min-width: 0;
+		min-height: 200px;
+		margin: 0 0 2em 0 !important;
+		flex: none;
+	}
+
+	.reflection-cols {
+		grid-template-columns: 1fr;
+	}
+
+	.options-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.stat-bar {
+		gap: 1.5rem;
+	}
+
+}
+
+@media screen and (max-width: 736px) {
+
+	.stat-item strong {
+		font-size: 1.7rem;
+	}
+
+	.analysis-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.features-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.section-tag {
+		font-size: 0.58rem;
+	}
+
+	.conclusion-box {
+		padding: 1.2rem 1.4rem;
+	}
+
+}
+
+@media screen and (max-width: 480px) {
+
+	.stat-bar {
+		gap: 1rem;
+	}
+
+	.stat-item strong {
+		font-size: 1.4rem;
+	}
+
+	.problem-card {
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	.img-slot {
+		min-height: 150px;
+	}
+
+	.option-pros-cons {
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
 }
